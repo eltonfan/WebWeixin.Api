@@ -4,7 +4,7 @@ namespace Weixin.Api.Entity
 {
     public class WxUser
     {
-        public int Uin { get; set; }
+        public long Uin { get; set; }
         /// <summary>
         /// 1个@是用户，2个@是群组
         /// </summary>
