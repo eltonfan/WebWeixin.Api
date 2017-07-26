@@ -182,15 +182,15 @@ namespace Weixin.Api.FormTest
             this.button3.Enabled = true;
         }
 
-        private void SetText(string text)
-        {
-            var log = DateTime.Now.ToString("HH:mm:ss.fff") + " " + text + "\r\n";
-            this.textBox1.AppendText(log);
-            WriteLog(log);
-        }
-
+        delegate void SetTextDelegate(string text, params object[] paras);
         private void SetText(string text, params object[] paras)
         {
+            if(this.InvokeRequired)
+            {
+                this.Invoke(new SetTextDelegate(SetText), text, paras);
+                return;
+            }
+
             var log = DateTime.Now.ToString("HH:mm:ss.fff") + " " + string.Format(text, paras) + "\r\n";
             this.textBox1.AppendText(log);
             WriteLog(log);
