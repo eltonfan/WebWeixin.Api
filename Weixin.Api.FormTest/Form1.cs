@@ -221,7 +221,7 @@ namespace Weixin.Api.FormTest
 
                         foreach (var msg in syncMsgResponse.AddMsgList)
                         {
-                            if (msg.MsgType == 1)
+                            if (msg.MsgType == Entity.MessageType.Text)
                             {
                                 #region text msg
                                 SetText("收到来自{0}的消息：{1}", msg.FromUserName, msg.Content);
@@ -232,7 +232,7 @@ namespace Weixin.Api.FormTest
                                     _userMsgMapping.Add(msg.FromUserName, msg.Content);
                                 #endregion
                             }
-                            else if (msg.MsgType == 3)
+                            else if (msg.MsgType == Entity.MessageType.Image)
                             {
                                 #region img msg
                                 SetText("收到来自{0}的图片：{1}", msg.FromUserName, Helper.SerializationHelper.SerializeObjectToJson(Helper.SerializationHelper.DeserializeXML<Entity.WxImgMsgContent>(msg.Content, true, "<br/>")));
@@ -306,7 +306,7 @@ namespace Weixin.Api.FormTest
                                 SetText("成功...{0}", _sendImgResponse.MsgID);
                                 #endregion
                             }
-                            else if (msg.MsgType == 37)
+                            else if (msg.MsgType == Entity.MessageType.AddFriend)
                             {
                                 #region add friend
                                 SetText("收到好友添加信息...");
@@ -325,7 +325,7 @@ namespace Weixin.Api.FormTest
                                 }
                                 #endregion
                             }
-                            else if(msg.MsgType == 49)
+                            else if(msg.MsgType == Entity.MessageType.Url)
                             {
                                 #region app msg
 

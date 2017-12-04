@@ -2,6 +2,30 @@
 
 namespace Weixin.Api.Entity
 {
+    public enum MessageType : int
+    {
+        /// <summary>1 - 文本信息|位置信息|新闻信息</summary>
+        Text = 1,
+        /// <summary>3 - 图片信息</summary>
+        Image = 3,
+        /// <summary>6 - App信息</summary>
+        App = 6,
+        /// <summary>34 - 语音消息</summary>
+        Audio = 34,
+        /// <summary>37 - 朋友添加信息<seealso cref="WxAddFriendMsg"/></summary>
+        AddFriend = 37,
+        /// <summary>42 - 个人名片</summary>
+        Contact = 42,
+        /// <summary>43 - 小视频</summary>
+        Video = 43,
+        /// <summary>47 - 非官方表情</summary>
+        Faceicon = 47,
+        /// <summary>49 - 转发链接  AppMsgType = 5 | 转账 FileName=微信转账 </summary>
+        Url = 49,
+        /// <summary>10000 - 红包 | AppMsgType = 0 | 朋友验证通过 Content=你已添加了Jarvis，现在可以开始聊天了。</summary>
+        Red = 10000,
+    }
+
     public class WxAddMsg
     {
         public string MsgId { get; set; }
@@ -20,7 +44,7 @@ namespace Weixin.Api.Entity
         /// <para>49 - 转发链接  AppMsgType = 5 | 转账 FileName=微信转账 </para>
         /// <para>10000 - 红包 | AppMsgType = 0 | 朋友验证通过 Content=你已添加了Jarvis，现在可以开始聊天了。</para>
         /// </summary>
-        public int MsgType { get; set; }
+        public MessageType MsgType { get; set; }
 
         /// <summary>
         /// 消息内容
